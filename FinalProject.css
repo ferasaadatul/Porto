@@ -1,0 +1,492 @@
+/* Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+/* Lilita */
+@import url('https://fonts.googleapis.com/css2?family=Jaro:opsz@6..72&family=Lilita+One&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+:root{
+    /* ===== Colors ===== */
+    --body-color: #E4E9F7;
+    --sidebar-color: #FFF;
+    --sidebar-green-color: #78C52C;
+    --primary-color: #695CFE;
+    --primary-color-light: #F6F5FF;
+    --toggle-color: #DDD;
+    --text-color: #707070;
+
+    /* ====== Transition ====== */
+    --tran-03: all 0.2s ease;
+    --tran-03: all 0.3s ease;
+    --tran-04: all 0.3s ease;
+    --tran-05: all 0.3s ease;
+}
+
+body{
+    min-height: 100vh;
+    background-color: var(--body-color);
+    transition: var(--tran-05);
+}
+
+::selection{
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+body.dark{
+    --body-color: #18191a;
+    --sidebar-color: #242526;
+    --primary-color: #3a3b3c;
+    --primary-color-light: #3a3b3c;
+    --toggle-color: #fff;
+    --text-color: #ccc;
+}
+
+/* ===== Sidebar ===== */
+ .sidebar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 250px;
+    margin-right: 10px;
+    padding: 10px 14px;
+    background: var(--sidebar-color);
+    transition: var(--tran-05);
+    z-index: 100;  
+}
+.sidebar.close{
+    width: 88px;
+}
+
+/* reusable */
+.sidebar li{
+    height: 50px;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.sidebar header .image,
+.sidebar .icon{
+    min-width: 60px;
+    border-radius: 6px;
+}
+
+.sidebar .icon{
+    min-width: 60px;
+    border-radius: 6px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+}
+
+.sidebar .text,
+.sidebar .icon{
+    color: var(--text-color);
+    transition: var(--tran-03);
+}
+
+.sidebar .text{
+    font-size: 17px;
+    font-weight: 500;
+    white-space: nowrap;
+    opacity: 1;
+}
+.sidebar.close .text{
+    opacity: 0;
+}
+/* =========================== */
+
+.sidebar header{
+    position: relative;
+}
+
+.sidebar header .image-text{
+    display: flex;
+    align-items: center;
+}
+.sidebar header .logo-text{
+    display: flex;
+    flex-direction: column;
+}
+header .image-text .name {
+    margin-top: 2px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+header .image-text .profession{
+    font-size: 16px;
+    margin-top: -2px;
+    display: block;
+}
+
+.sidebar header .image{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sidebar header .image img{
+    width: 40px;
+    border-radius: 6px;
+}
+
+.sidebar header .toggle{
+    position: absolute;
+    top: 50%;
+    right: -25px;
+    transform: translateY(-50%) rotate(180deg);
+    height: 25px;
+    width: 25px;
+    background-color: var(--primary-color);
+    color: var(--sidebar-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    cursor: pointer;
+    transition: var(--tran-05);
+}
+
+body.dark .sidebar header .toggle{
+    color: var(--text-color);
+}
+
+.sidebar.close .toggle{
+    transform: translateY(-50%) rotate(0deg);
+}
+
+.sidebar .menu{
+    margin-top: 40px;
+}
+
+.sidebar li.search-box{
+    border-radius: 6px;
+    background-color: var(--primary-color-light);
+    cursor: pointer;
+    transition: var(--tran-05);
+}
+
+.sidebar li.search-box input{
+    height: 100%;
+    width: 100%;
+    outline: none;
+    border: none;
+    background-color: var(--primary-color-light);
+    color: var(--text-color);
+    border-radius: 6px;
+    font-size: 17px;
+    font-weight: 500;
+    transition: var(--tran-05);
+}
+.sidebar li a{
+    list-style: none;
+    height: 100%;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: var(--tran-03);
+}
+
+.sidebar li a:hover{
+    background-color: var(--primary-color);
+}
+.sidebar li a:hover .icon,
+.sidebar li a:hover .text{
+    color: var(--sidebar-color);
+}
+body.dark .sidebar li a:hover .icon,
+body.dark .sidebar li a:hover .text{
+    color: var(--text-color);
+}
+
+.sidebar .menu-bar{
+    height: calc(100% - 55px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow-y: scroll;
+}
+.menu-bar::-webkit-scrollbar{
+    display: none;
+}
+.sidebar .menu-bar .mode{
+    border-radius: 6px;
+    background-color: var(--primary-color-light);
+    position: relative;
+    transition: var(--tran-05);
+}
+
+.menu-bar .mode .sun-moon{
+    height: 50px;
+    width: 60px;
+}
+
+.mode .sun-moon i{
+    position: absolute;
+}
+.mode .sun-moon i.sun{
+    opacity: 0;
+}
+body.dark .mode .sun-moon i.sun{
+    opacity: 1;
+}
+body.dark .mode .sun-moon i.moon{
+    opacity: 0;
+}
+
+.menu-bar .bottom-content .toggle-switch{
+    position: absolute;
+    right: 0;
+    height: 100%;
+    min-width: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    cursor: pointer;
+}
+.toggle-switch .switch{
+    position: relative;
+    height: 22px;
+    width: 40px;
+    border-radius: 25px;
+    background-color: var(--toggle-color);
+    transition: var(--tran-05);
+}
+
+.switch::before{
+    content: '';
+    position: absolute;
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    background-color: var(--sidebar-color);
+    transition: var(--tran-04);
+}
+
+body.dark .switch::before{
+    left: 20px;
+}
+
+.home{
+    padding-left: 12px;
+    position: absolute;
+    top: 0;
+    top: 0;
+    left: 250px;
+    height: 100vh;
+    width: calc(100% - 250px);
+    background-color: var(--body-color);
+    transition: var(--tran-05);
+}
+
+.home .title-img {
+    width: 70px;
+}
+
+.home .text{
+    font-size: 20px;
+    font-weight: 500;
+    color: #F9E8D9;
+    padding: 12px 60px;
+    background-color: #78C52C;
+}
+.home .text p {
+    text-align: center;
+    font-size: 40px;
+    margin-bottom: 20px;
+    font-family: "Lilita One", sans-serif;
+}
+
+.home .recomendation-title {
+    padding-left: 20px;
+    text-align: start;
+    color: var(--text-color);
+    margin-top: 40px;
+    font-size: 30px;
+    font-family: "Lilita One", sans-serif;
+}
+
+.sidebar.close ~ .home{
+    left: 78px;
+    height: 100vh;
+    width: calc(100% - 78px);
+}
+body.dark .home .text{
+    color: var(--text-color);
+}
+
+/* Search Bar */
+
+.search {
+  width: max-content;
+  display: flex;
+  align-items: center;
+  padding: 14px;
+  border-radius: 26px;
+  background: #f6f6f6;
+  flex-wrap: wrap;
+}
+
+.search:focus-within {
+  box-shadow: 0 0 2px rgb(0, 0, 0.75);
+}
+
+.search-input {
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 16px;
+  font-family: sans-serif;
+  color: #333333;
+  margin-left: 15px;
+  width: 500px;
+  flex-grow: 1;
+}
+
+.search-input::placeholder,search-icon { 
+  color: rgb(0,0,0.25);
+}
+
+.search-icon {
+    color: var(--primary-color); /* Atur warna ikon sesuai dengan tema */
+    cursor: pointer;
+    transition: color var(--tran-03); /* Animasi saat mengubah warna ikon */
+}
+
+form {
+  margin-top: 10px;
+  margin-bottom: 80px;
+  align-self: center;
+  display: flex;
+  justify-content: center;
+}
+
+form i {
+    cursor: pointer;
+}
+
+/* button makanan */
+#foodButtons {
+    padding-top: 30px; 
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 0px;
+}
+
+#foodButtons button {
+    padding: 5px 20px;
+    font-size: 15px;
+    cursor: pointer;
+    background-color: var(--sidebar-color);
+    color: var(--text-color);
+    border: none;
+    border-radius: 7px;
+    margin-left: 4px;
+    margin-right: 5px;
+    margin-bottom: 10px; 
+    transition: var(--tran-03);
+    display: flex;
+}
+
+#foodButtons button:hover {
+    background-color: var(--primary-color); /* Ubah warna latar saat hover */
+    color: var(--sidebar-color);
+}
+
+/* Flip card */
+
+.horizontal-card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    margin-top: 10px;
+}
+
+.horizontal-card {
+    position: relative;
+    display: flex;
+    max-width: 400px;
+    margin: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: var(--sidebar-color); /* Use sidebar color for background */
+}
+
+.card-img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+}
+
+.card-content {
+    padding: 20px;
+    flex-grow: 1;
+}
+
+.card-content h3 {
+    font-size: 18px;
+    margin-top: 0;
+    color: var(--text-color); /* Use text color variable */
+}
+
+.card-content p {
+    font-size: 14px;
+    color: var(--text-color); /* Use text color variable */
+}
+
+.card-button {
+    position: absolute;
+    bottom: 10px; /* Adjust as needed to leave space from the bottom */
+    right: 10px; /* Adjust as needed to leave space from the right */
+    padding: 8px 12px;
+    font-size: 14px;
+    color: var(--sidebar-color); /* Use sidebar color for button text */
+    background-color: var(--primary-color); /* Use primary color for button background */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: var(--tran-03);
+}
+
+.card-button:hover {
+    background-color: var(--primary-color-light); /* Use lighter shade of primary color on hover */
+}
+
+@media screen and (max-width: 768px) {
+    .search {
+        flex-direction: row; /* Kembalikan ke tata letak baris untuk layar kecil */
+        align-items: center;
+    }
+
+    .search-input {
+        flex-grow: 0; /* Jangan biarkan input memanjang sejauh mungkin */
+        width: auto; /* Atur lebar input sesuai kebutuhan konten */
+        margin-left: 0; /* Hapus margin kiri pada layar kecil */
+    }
+
+    .search-text {
+        display: inline; /* Tampilkan kembali teks "search" */
+    }
+}
